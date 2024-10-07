@@ -1,5 +1,5 @@
 - name: My first play
-  hosts: myhosts
+  hosts: "{{ target_hosts }}"
   tasks:
     - name: Ping my hosts
       ansible.builtin.ping:
