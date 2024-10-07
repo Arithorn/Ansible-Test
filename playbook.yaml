@@ -7,3 +7,8 @@
     - name: Print message
       ansible.builtin.debug:
         msg: Hello world
+    - name: Ensure a specific package is installed
+      ansible.builtin.package:
+        name: "{{ package_name }}"
+        state: present
+        become: yes

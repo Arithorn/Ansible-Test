@@ -1,0 +1,13 @@
+- name: Install Base Linux Packages
+  hosts: "{{ target_hosts }}"
+  tasks:
+    - name: Ensure Ping is installed
+      ansible.builtin.package:
+        name: iputils-ping
+        state: present
+        become: yes
+    - name: Ensure Screen is installed
+      ansible.builtin.package:
+        name: screen
+        state: present
+        become: yes
