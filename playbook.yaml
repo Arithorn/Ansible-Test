@@ -1,14 +1,14 @@
-- name: My first play
+- name: Update All Packages
   hosts: "{{ target_hosts }}"
   tasks:
-    - name: Ping my hosts
-      ansible.builtin.ping:
+    - name: Update all packages to the latest version
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
 
-    - name: Print message
-      ansible.builtin.debug:
-        msg: Hello world
-    - name: Ensure a specific package is installed
-      ansible.builtin.package:
-        name: "{{ package_name }}"
-        state: present
-        become: yes
+    - name: Clean up cached packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: absent
+        autoremove: true
+        clean_requirements_on_remove: true
