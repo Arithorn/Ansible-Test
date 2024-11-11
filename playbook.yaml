@@ -5,10 +5,3 @@
       ansible.builtin.dnf:
         name: "*"
         state: latest
-
-    - name: Clean up cached packages
-      ansible.builtin.dnf:
-        name: "*"
-        state: absent
-        autoremove: true
-        clean_requirements_on_remove: true
